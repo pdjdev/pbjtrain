@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>기차 화이트노이즈 (백색소음)</title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="fabicon.png">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+#myVideo {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.content {
+  position: fixed;
+  bottom: 20%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px 40px 20px 40px;
+}
+
+.tail {
+  position: fixed;
+  bottom: 0%;
+  color: rgba(255,255,255, 0.3);
+  width: 100%;
+  padding: 20px;
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<video muted loop id="myVideo">
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<audio loop id="trainSnd">
+  <source src="trainSnd.opus" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
+<center>
+
+<div class="content">
+  <h1>기차 화이트노이즈</h1>
+  <p>기차 안에서의 편안한 느낌을 언제 어디서든 받아보세요.</p>
+  <button id="myBtn" onclick="myFunction()">재생 시작</button><br><br><br>
+</div>
+
+<div class="tail">
+  <font size="2px">Hosted by <a href="http://blog.pbj.kr">PBJ.KR</a>
+  <br><font size="1px">이 페이지의 영상과 소리는 모두 압축 처리 되어 있으므로 데이터 부담 없이 사용하셔도 됩니다.
+  <br>(분당 0.6MB 소요, 3초 비디오/2시간 오디오 루프)</font>
+</div>
+
+<script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+	trainSnd.play();
+    btn.innerHTML = "정지";
+  } else {
+    video.pause();
+	trainSnd.pause();
+    btn.innerHTML = "재생 시작";
+  }
+}
+</script>
+
+</body>
+</html>
